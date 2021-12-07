@@ -25,7 +25,7 @@ public class UnitSpawner : NetworkBehaviour,IPointerClickHandler
   public void OnPointerClick(PointerEventData eventData)
   {
     Debug.Log("dsfsd");
-    if (eventData.button == PointerEventData.InputButton.Left && hasAuthority)
+    if (eventData.button == PointerEventData.InputButton.Right && hasAuthority)
       CmdSpawnUnit();
   }
 
