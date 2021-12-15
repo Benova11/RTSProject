@@ -54,8 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Networking/RTSNetworkManager.cs" />
-    <Compile Include="Assets/Scripts/Units/UnitMovements.cs" />
     <Compile Include="Assets/Scripts/Buildings/UnitSpawner.cs" />
+    <Compile Include="Assets/Scripts/Units/UnitMovements.cs" />
+    <Compile Include="Assets/Scripts/Units/Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll" />
@@ -743,6 +744,30 @@
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Path.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.csproj">
@@ -756,6 +781,10 @@
     <ProjectReference Include="Mirror.Examples.csproj">
       <Project>{049136CC-1B1C-875A-BF87-813682C86928}</Project>
       <Name>Mirror.Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="ParrelSync.csproj">
+      <Project>{739E5D8D-297C-C72C-6E2B-67B42B5DD7AC}</Project>
+      <Name>ParrelSync</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
       <Project>{BD9049E5-86BF-47ED-4EC3-DC89694255B3}</Project>
@@ -784,10 +813,6 @@
     <ProjectReference Include="Mirror.Components.csproj">
       <Project>{982018E8-DC31-7CFA-D863-464764F1473E}</Project>
       <Name>Mirror.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="ParrelSync.csproj">
-      <Project>{739E5D8D-297C-C72C-6E2B-67B42B5DD7AC}</Project>
-      <Name>ParrelSync</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{ABF2625F-5F5C-A82E-E4AC-FA2410CA3144}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Networking/RTSNetworkManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Units/Unit.cs">
     <Files>
-      <File FileName="Assets/Scripts/Buildings/UnitSpawner.cs" Line="21" Column="1" />
-      <File FileName="Assets/Scripts/Networking/RTSNetworkManager.cs" Line="6" Column="11" />
+      <File FileName="Assets/Scripts/Buildings/UnitSpawner.cs" Line="10" Column="17" />
+      <File FileName="Assets/Scripts/Networking/RTSNetworkManager.cs" />
+      <File FileName="Assets/Scripts/Units/Unit.cs" Line="5" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="36ef5f9b-7972-467e-ac66-580ed43b467f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5c8be389-0232-460d-b4f5-e2f33508d3e5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
