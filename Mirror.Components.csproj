@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,43 +53,40 @@
     <UnityVersion>2020.3.10f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets/Mirror/Components/AssemblyInfo.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkSceneChecker.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkOwnerChecker.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformChild.cs" />
     <Compile Include="Assets/Mirror/Components/Discovery/NetworkDiscoveryHUD.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkLobbyPlayer.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransform.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkRoomPlayer.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkMatch.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkPingDisplay.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformBase.cs" />
-    <Compile Include="Assets/Mirror/Components/Discovery/ServerRequest.cs" />
-    <Compile Include="Assets/Mirror/Components/Experimental/NetworkTransformChild.cs" />
-    <Compile Include="Assets/Mirror/Components/Experimental/NetworkRigidbody2D.cs" />
+    <Compile Include="Assets/Mirror/Components/InterestManagement/SpatialHashing/Grid2D.cs" />
     <Compile Include="Assets/Mirror/Components/Experimental/NetworkTransformBase.cs" />
-    <Compile Include="Assets/Mirror/Components/Experimental/NetworkTransform.cs" />
     <Compile Include="Assets/Mirror/Components/Experimental/NetworkLerpRigidbody.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkMatchChecker.cs" />
+    <Compile Include="Assets/Mirror/Components/Discovery/NetworkDiscovery.cs" />
+    <Compile Include="Assets/Mirror/Components/Experimental/NetworkTransform.cs" />
     <Compile Include="Assets/Mirror/Components/InterestManagement/Scene/SceneInterestManagement.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkLobbyManager.cs" />
+    <Compile Include="Assets/Mirror/Components/Discovery/ServerResponse.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformSnapshot.cs" />
+    <Compile Include="Assets/Mirror/Components/GUIConsole.cs" />
+    <Compile Include="Assets/Mirror/Components/AssemblyInfo.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkPingDisplay.cs" />
+    <Compile Include="Assets/Mirror/Components/Experimental/NetworkRigidbody2D.cs" />
     <Compile Include="Assets/Mirror/Components/NetworkRoomManager.cs" />
     <Compile Include="Assets/Mirror/Components/Experimental/NetworkRigidbody.cs" />
-    <Compile Include="Assets/Mirror/Components/InterestManagement/SpatialHashing/Grid2D.cs" />
-    <Compile Include="Assets/Mirror/Components/Discovery/NetworkDiscoveryBase.cs" />
     <Compile Include="Assets/Mirror/Components/NetworkAnimator.cs" />
-    <Compile Include="Assets/Mirror/Components/InterestManagement/Distance/DistanceInterestManagement.cs" />
-    <Compile Include="Assets/Mirror/Components/Discovery/ServerResponse.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformChild.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkLobbyPlayer.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformBase.cs" />
+    <Compile Include="Assets/Mirror/Components/Experimental/NetworkTransformChild.cs" />
+    <Compile Include="Assets/Mirror/Components/Discovery/NetworkDiscoveryBase.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkOwnerChecker.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkMatch.cs" />
+    <Compile Include="Assets/Mirror/Components/Discovery/ServerRequest.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkLobbyManager.cs" />
     <Compile Include="Assets/Mirror/Components/InterestManagement/Match/MatchInterestManagement.cs" />
-    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransformSnapshot.cs" />
     <Compile Include="Assets/Mirror/Components/InterestManagement/Distance/DistanceInterestManagementCustomRange.cs" />
-    <Compile Include="Assets/Mirror/Components/Discovery/NetworkDiscovery.cs" />
-    <Compile Include="Assets/Mirror/Components/GUIConsole.cs" />
-    <Compile Include="Assets/Mirror/Components/InterestManagement/SpatialHashing/SpatialHashingInterestManagement.cs" />
+    <Compile Include="Assets/Mirror/Components/InterestManagement/Distance/DistanceInterestManagement.cs" />
     <Compile Include="Assets/Mirror/Components/NetworkProximityChecker.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkSceneChecker.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkTransform2k/NetworkTransform.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkRoomPlayer.cs" />
+    <Compile Include="Assets/Mirror/Components/NetworkMatchChecker.cs" />
+    <Compile Include="Assets/Mirror/Components/InterestManagement/SpatialHashing/SpatialHashingInterestManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Mirror/Components/Mirror.Components.asmdef" />
@@ -332,8 +329,17 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.CecilX.Rocks">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX.Pdb">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
@@ -344,20 +350,11 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    <Reference Include="unityplastic">
+      <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/2020.3.10f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

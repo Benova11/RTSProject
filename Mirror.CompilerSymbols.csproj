@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,9 +52,6 @@
     <UnityBuildTarget>StandaloneOSX:2</UnityBuildTarget>
     <UnityVersion>2020.3.10f1</UnityVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Mirror/CompilerSymbols/PreprocessorDefine.cs" />
   </ItemGroup>
@@ -299,8 +296,17 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.CecilX.Rocks">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX.Pdb">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX">
+      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
@@ -311,20 +317,11 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    <Reference Include="unityplastic">
+      <HintPath>Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
