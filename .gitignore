@@ -94,3 +94,5 @@ Assets/Rock Beat/.DS_Store
 Library/
 
 Logs/
+
+obj/Debug/
