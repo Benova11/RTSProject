@@ -15,6 +15,7 @@ public class UnitSpawner : NetworkBehaviour,IPointerClickHandler
     GameObject unitInstance = Instantiate(unitPrefab, unitSpawnPoint.position, unitSpawnPoint.rotation);
 
     NetworkServer.Spawn(unitInstance, connectionToClient);
+    unitInstance.GetComponent<Unit>().Deselect();
   }
 
   #endregion
@@ -24,7 +25,6 @@ public class UnitSpawner : NetworkBehaviour,IPointerClickHandler
   [ClientCallback]
   public void OnPointerClick(PointerEventData eventData)
   {
-    Debug.Log("dsfsd");
     if (eventData.button == PointerEventData.InputButton.Right && hasAuthority)
       CmdSpawnUnit();
   }

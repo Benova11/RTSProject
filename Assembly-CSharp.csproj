@@ -55,8 +55,10 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Networking/RTSNetworkManager.cs" />
     <Compile Include="Assets/Scripts/Units/Unit.cs" />
+    <Compile Include="Assets/Scripts/Units/UnitOperator.cs" />
     <Compile Include="Assets/Scripts/Buildings/UnitSpawner.cs" />
     <Compile Include="Assets/Scripts/Units/UnitMovements.cs" />
+    <Compile Include="Assets/Scripts/Units/UnitsSelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll" />
