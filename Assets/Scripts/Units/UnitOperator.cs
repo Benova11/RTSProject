@@ -6,6 +6,7 @@ public class UnitOperator : MonoBehaviour
   private Camera mainCamera;
 
   [SerializeField] UnitsSelectionManager unitsSelectionManager = null;
+  [SerializeField] UnitSelectionHandler selectionHandler = null;
   [SerializeField] LayerMask layerMask = new LayerMask();
 
   private void Start()
@@ -28,6 +29,12 @@ public class UnitOperator : MonoBehaviour
     foreach(Unit unit in unitsSelectionManager.SelectedUnits)
     {
       unit.UnitMovements.CmdMove(movePoint);
+            
+    }    
+    foreach(Unit unit in selectionHandler.SelectedUnits)
+    {
+      unit.UnitMovements.CmdMove(movePoint);
+            
     }
   }
 }

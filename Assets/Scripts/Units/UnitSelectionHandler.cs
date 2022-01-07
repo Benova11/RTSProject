@@ -11,7 +11,7 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private Vector2 startPosition;
 
-    private RTSPlayer player;
+    public RTSPlayer player;
     private Camera mainCamera;
 
     public List<Unit> SelectedUnits { get; } = new List<Unit>();
@@ -20,12 +20,16 @@ public class UnitSelectionHandler : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-
+    
     private void Update()
     {
         if (player == null)
         {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+            player = FindObjectOfType<RTSPlayer>();
+            if (player == null)
+            {
+                return;
+            }
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
