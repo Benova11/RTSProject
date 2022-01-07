@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsSelectionManager: {fileID: 520321252}
+  selectionHandler: {fileID: 1812947136}
   layerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -483,9 +484,9 @@ RectTransform:
   m_Father: {fileID: 1809037603}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301287569
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.72156864, g: 1, b: 0.72626054, a: 0.14117648}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -909,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsSelectionManager: {fileID: 520321252}
+  selectionHandler: {fileID: 1812947136}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -924,10 +926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709378c042c8267488feca16e346ca28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSelectionArea: {fileID: 1809037603}
+  unitSelectionArea: {fileID: 1301287568}
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  player: {fileID: 0}
 --- !u!4 &1812947137
 Transform:
   m_ObjectHideFlags: 0
