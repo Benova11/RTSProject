@@ -96,3 +96,5 @@ Library/
 Logs/
 
 obj/Debug/
+
+Packages/
