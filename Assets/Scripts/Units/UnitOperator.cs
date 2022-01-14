@@ -19,22 +19,38 @@ public class UnitOperator : MonoBehaviour
     if(!Mouse.current.rightButton.wasPressedThisFrame) { return; }
 
     Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
     if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask)) { return; }
+
+    if(hit.collider.TryGetComponent(out Targetable targetable))
+    {
+      if (targetable.hasAuthority)
+      {
+        TryMove(hit.point);
+        return;
+      }
+
+      TryTarget(targetable);
+      return;
+    }
 
     TryMove(hit.point);
   }
 
   private void TryMove(Vector3 movePoint)
   {
-    foreach(Unit unit in unitsSelectionManager.SelectedUnits)
-    {
-      unit.UnitMovements.CmdMove(movePoint);
-            
-    }    
     foreach(Unit unit in selectionHandler.SelectedUnits)
     {
-      unit.UnitMovements.CmdMove(movePoint);
-            
+      unit.UnitMovements.CmdMove(movePoint);  
     }
   }
+
+  private void TryTarget(Targetable targetable)
+  {
+    foreach (Unit unit in selectionHandler.SelectedUnits)
+    {
+      unit.Targeter.CmdSetTarget(targetable.gameObject);
+    }
+  }
+
 }
