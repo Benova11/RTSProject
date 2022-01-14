@@ -1144,5 +1144,13 @@ PrefabInstance:
       propertyPath: offlineScene
       value: Assets/Scenes/SampleScene 1.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 7971647975309649621, guid: 89a14cd3cbbe8ba499ba62a87b7d91cc, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971647975309649621, guid: 89a14cd3cbbe8ba499ba62a87b7d91cc, type: 3}
+      propertyPath: spawnPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1887843877052252556, guid: 427bd9d4a43494ebb9c72c65250caf7c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a14cd3cbbe8ba499ba62a87b7d91cc, type: 3}

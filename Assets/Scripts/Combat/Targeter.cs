@@ -4,7 +4,9 @@ using Mirror;
 
 public class Targeter : NetworkBehaviour
 {
-  [SerializeField] Targetable target;
+  Targetable target;
+
+  public Targetable Target { get { return target; } }
 
   #region Server
 
@@ -24,11 +26,4 @@ public class Targeter : NetworkBehaviour
 
   #endregion
 
-
-
-  #region Client
-
-
-
-  #endregion
 }
