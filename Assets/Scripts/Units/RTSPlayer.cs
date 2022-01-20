@@ -5,78 +5,114 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
+  [SerializeField] private List<Unit> myUnits = new List<Unit>();
 
-        [SerializeField] private List<Unit> myUnits = new List<Unit>();
+  [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
+  bool isPartyOwner = false;
 
-        public List<Unit> GetMyUnits()
-        {
-            return myUnits;
-        }
+  public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
 
-        #region Server
+  public List<Unit> GetMyUnits()
+  {
+    return myUnits;
+  }
 
-        public override void OnStartServer()
-        {
-            Unit.ServerOnUnitSpawned += ServerHandleUnitSpawned;
-            Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
-        }
+  public bool GetIsPartyOwner()
+  {
+    return isPartyOwner;
+  }
+  #region Server
 
-        public override void OnStopServer()
-        {
-            Unit.ServerOnUnitSpawned -= ServerHandleUnitSpawned;
-            Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
-        }
+  public override void OnStartServer()
+  {
+    Unit.ServerOnUnitSpawned += ServerHandleUnitSpawned;
+    Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
+  }
 
-        private void ServerHandleUnitSpawned(Unit unit)
-        {
-            if (unit.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
+  public override void OnStopServer()
+  {
+    Unit.ServerOnUnitSpawned -= ServerHandleUnitSpawned;
+    Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
+  }
 
-            myUnits.Add(unit);
-        }
+  [Server]
+  public void SetPartyOwner(bool state)
+  {
+    isPartyOwner = state;
+  }
 
-        private void ServerHandleUnitDespawned(Unit unit)
-        {
-            if (unit.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
+  private void ServerHandleUnitSpawned(Unit unit)
+  {
+    if (unit.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
 
-            myUnits.Remove(unit);
-        }
+    myUnits.Add(unit);
+  }
 
-        #endregion
+  private void ServerHandleUnitDespawned(Unit unit)
+  {
+    if (unit.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
 
-        #region Client
+    myUnits.Remove(unit);
+  }
 
-        public override void OnStartClient()
-        {
-            if (!isClientOnly) { return; }
+  #endregion
 
-            Unit.AuthorityOnUnitSpawned += AuthorityHandleUnitSpawned;
-            Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
-        }
+  #region Client
 
-        public override void OnStopClient()
-        {
-            if (!isClientOnly) { return; }
+  public override void OnStartClient()
+  {
+    if(NetworkServer.active) { return; }
 
-            Unit.AuthorityOnUnitSpawned -= AuthorityHandleUnitSpawned;
-            Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
-        }
+    ((RTSNetworkManager)NetworkManager.singleton).Players.Add(this);
 
-        private void AuthorityHandleUnitSpawned(Unit unit)
-        {
-            if (!hasAuthority) { return; }
+    if (!isClientOnly) { return; }
 
-            myUnits.Add(unit);
-        }
+    Unit.AuthorityOnUnitSpawned += AuthorityHandleUnitSpawned;
+    Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
+  }
 
-        private void AuthorityHandleUnitDespawned(Unit unit)
-        {
-            if (!hasAuthority) { return; }
+  public void CmdStartGame()
+  {
+    if(!isPartyOwner) { return; }
 
-            myUnits.Remove(unit);
-        }
+    ((RTSNetworkManager)NetworkManager.singleton).StartGame();
+  }
 
-        #endregion
-    }
+  public override void OnStopClient()
+  {
+    if (!isClientOnly) { return; }
+
+    ((RTSNetworkManager)NetworkManager.singleton).Players.Remove(this);
+
+    if(!hasAuthority) { return; }
+
+    Unit.AuthorityOnUnitSpawned -= AuthorityHandleUnitSpawned;
+    Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
+  }
+
+  void AuthorityHandlePartyOwnerStateUpdated(bool oldState, bool newState)
+  {
+    if(!hasAuthority) { return; }
+
+    AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
+  }
+
+  private void AuthorityHandleUnitSpawned(Unit unit)
+  {
+    if (!hasAuthority) { return; }
+
+    myUnits.Add(unit);
+  }
+
+  private void AuthorityHandleUnitDespawned(Unit unit)
+  {
+    if (!hasAuthority) { return; }
+
+    myUnits.Remove(unit);
+  }
+
+  #endregion
+}
 
 
 
