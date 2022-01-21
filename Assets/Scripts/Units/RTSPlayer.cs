@@ -5,19 +5,64 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
-  [SerializeField] private List<Unit> myUnits = new List<Unit>();
+    [SerializeField] private Transform cameraTransform = null;
+    [SerializeField] private LayerMask buildingBlockLayer = new LayerMask();
+    [SerializeField] private Building[] buildings = new Building[0];
+    [SerializeField] private float buildingRangeLimit = 5f;
 
-  [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
-  bool isPartyOwner = false;
+    [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
+    private int resources = 500;
+    [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
+    private bool isPartyOwner = false;
+    [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
+    private string displayName;
 
-  public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
+    public event Action<int> ClientOnResourcesUpdated;
 
-  public List<Unit> GetMyUnits()
+    public static event Action ClientOnInfoUpdated;
+    public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
+
+    private Color teamColor = new Color();
+    private List<Unit> myUnits = new List<Unit>();
+    private List<Building> myBuildings = new List<Building>();
+
+
+    public bool CanPlaceBuilding(BoxCollider buildingCollider, Vector3 point)
+    {
+        if (Physics.CheckBox(
+                    point + buildingCollider.center,
+                    buildingCollider.size / 2,
+                    Quaternion.identity,
+                    buildingBlockLayer))
+        {
+            return false;
+        }
+
+        foreach (Building building in myBuildings)
+        {
+            if ((point - building.transform.position).sqrMagnitude
+                <= buildingRangeLimit * buildingRangeLimit)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public int GetResources()
+    {
+        return resources;
+    }
+    public List<Unit> GetMyUnits()
   {
     return myUnits;
   }
+    public Transform GetCameraTransform()
+    {
+        return cameraTransform;
+    }
 
-  public bool GetIsPartyOwner()
+    public bool GetIsPartyOwner()
   {
     return isPartyOwner;
   }
@@ -40,8 +85,24 @@ public class RTSPlayer : NetworkBehaviour
   {
     isPartyOwner = state;
   }
+    [Server]
+    public void SetResources(int newResources)
+    {
+        resources = newResources;
+    }
 
-  private void ServerHandleUnitSpawned(Unit unit)
+    [Server]
+    public void SetDisplayName(string displayName)
+    {
+        this.displayName = displayName;
+    }
+
+    [Server]
+    public void SetTeamColor(Color newTeamColor)
+    {
+        teamColor = newTeamColor;
+    }
+    private void ServerHandleUnitSpawned(Unit unit)
   {
     if (unit.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
 
@@ -55,11 +116,16 @@ public class RTSPlayer : NetworkBehaviour
     myUnits.Remove(unit);
   }
 
-  #endregion
+    #endregion
 
-  #region Client
+    #region Client
 
-  public override void OnStartClient()
+    private void ClientHandleResourcesUpdated(int oldResources, int newResources)
+    {
+        ClientOnResourcesUpdated?.Invoke(newResources);
+    }
+
+    public override void OnStartClient()
   {
     if(NetworkServer.active) { return; }
 
@@ -70,8 +136,11 @@ public class RTSPlayer : NetworkBehaviour
     Unit.AuthorityOnUnitSpawned += AuthorityHandleUnitSpawned;
     Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
   }
-
-  public void CmdStartGame()
+    private void ClientHandleDisplayNameUpdated(string oldDisplayName, string newDisplayName)
+    {
+        ClientOnInfoUpdated?.Invoke();
+    }
+    public void CmdStartGame()
   {
     if(!isPartyOwner) { return; }
 
@@ -97,22 +166,34 @@ public class RTSPlayer : NetworkBehaviour
     AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
   }
 
-  private void AuthorityHandleUnitSpawned(Unit unit)
-  {
-    if (!hasAuthority) { return; }
+    private void AuthorityHandleUnitSpawned(Unit unit)
+    {
+        myUnits.Add(unit);
+    }
 
-    myUnits.Add(unit);
-  }
+    private void AuthorityHandleUnitDespawned(Unit unit)
+    {
+        myUnits.Remove(unit);
+    }
 
-  private void AuthorityHandleUnitDespawned(Unit unit)
-  {
-    if (!hasAuthority) { return; }
+    private void AuthorityHandleBuildingSpawned(Building building)
+    {
+        myBuildings.Add(building);
+    }
 
-    myUnits.Remove(unit);
-  }
+    private void AuthorityHandleBuildingDespawned(Building building)
+    {
+        myBuildings.Remove(building);
+    }
 
-  #endregion
+    internal Color GetTeamColor()
+    {
+        return teamColor; return teamColor;
+    }
+
+    #endregion
 }
+
 
 
 

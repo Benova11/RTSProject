@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="90ba1d2b-16fd-45d3-97c0-3f33fbd5d71f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Editor/nisim.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Editor/nisim.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resources/Floor.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resources/Floor.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resources/MenuPrefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resources/MenuPrefab.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.progrids/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.progrids/Settings.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Health.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="23vNrXHsKkfvWx3YkXj54ihfX1I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90ba1d2b-16fd-45d3-97c0-3f33fbd5d71f" name="Changes" comment="" />
+      <created>1642610804709</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642610804709</updated>
+      <workItem from="1642610811598" duration="81000" />
+      <workItem from="1642610929776" duration="127000" />
+      <workItem from="1642611075715" duration="9000" />
+      <workItem from="1642611395096" duration="41000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
